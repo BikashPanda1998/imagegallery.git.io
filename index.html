@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <ul class="filterbar">
+            <li class="list active" data-filter="all">All</li>
+            <li class="list" data-filter="shoes">Shoes</li>
+            <li class="list" data-filter="phone">Mobile</li>
+            <li class="list" data-filter="tshirt">Tshirt</li>
+            <li class="list" data-filter="headphones">HeadPhones</li>
+            <li class="list" data-filter="coffe">Coffee</li>
+            <li class="list" data-filter="pizza">Pizza</li>
+
+        </ul>
+        <span>SORT BY</span>
+        <select name="" id="select">
+            <option value="Default">Default</option>
+            <option value="asc">A-Z asc</option>
+            <option value="desc">Z-A desc</option>
+        </select>
+    </section>
+    <div class="gallery" id="productlist">
+        
+        <div class="product" data-item="phone" data-name="POCO X5 PRO">
+            <img src="./image/poco x5pro.jpg" alt="POCO X5 pro" srcset="">
+            <small>POCO X5 PRO</small>
+        </div>
+        <div class="product" data-item="phone" data-name="OPPO A-55">
+            <img src="./image/OPPO-A55.jpg" alt="OPPO-A55" srcset="">
+            <small>OPPO A-55</small>
+        </div>
+        <div class="product" data-item="phone" data-name="REALME 10 PRO PLUS">
+            <img src="./image/realme 10pro+.jpeg" alt="realme10 pro" srcset="">
+            <small>REALME 10 PRO PLUS</small>
+        </div>
+        <div class="product" data-item="phone" data-name="IPHONE 14 PRO MAX">
+            <img src="./image/iPhone-14promax.jpg" alt="iphone-14 pro max" srcset="">
+            <small>IPHONE 14 PRO MAX</small>
+        </div>
+        <div class="product" data-item="phone" data-name="">
+            <img src="./image/realme8pro.jpeg" alt="realme8pro" srcset="">
+            <small>REALME 8 PRO</small>
+        </div>
+
+        <div class="product" data-item="phone" data-name="">
+            <img src="./image/Moto_One.jpg" alt="Moto_One" srcset="">
+            <small>MOTO ONE 5G</small>
+        </div>
+        <div class="product" data-item="shoes" data-name="">
+            <img src="./image/nike.jpeg" alt="nike" srcset="">
+            <small>NIKE AIR MAX</small>
+        </div>
+        <div class="product" data-item="shoes" data-name="">
+            <img src="./image/puma.jpeg" alt="puma" srcset="">
+            <small>PUMA 6540</small>
+        </div>
+        <div class="product" data-item="shoes" data-name="">
+            <img src="./image/pumacart.jpg" alt="puma cart" srcset="">
+            <small>PUMA CAT</small>
+        </div>
+        <div  class="product" data-item="headphones" data-name="">
+            <img src="./image/beats_headphone.jpeg" alt="beats headphone" srcset="">
+            <small>BEATS HEADPHONE</small>
+        </div>
+        <div class="product" data-item="headphones" data-name="">
+            <img src="./image/sony headphone.jpeg" alt="sony headphone" srcset="">
+            <small>SONY HEADPHONES</small>
+        </div>
+
+        <div class="product" data-item="headphones" data-name="">
+            <img src="./image/skullcandy.jpg" alt="skullcandy" srcset="">
+            <small>SKULL CANDY HEADPHONE</small>
+        </div>
+        <div class="product" data-item="tshirt" data-name="">
+            <img src="./image/browntshirt.jpeg" alt="browntshirt" srcset="">
+            <small>BROWN T-SHIRT</small>
+        </div>
+        <div class="product" data-item="tshirt" data-name="">
+            <img src="./image/tshirt.jpeg" alt="tshirt" srcset="">
+            <small>TSHIRT</small>
+        </div>
+        <div class="product" data-item="tshirt" data-name="">
+            <img src="./image/whitetshirt.jpeg" alt="whitetshirt" srcset="">
+            <small>WHITE T-SHIRT</small>
+        </div>
+        <div class="product" data-item="coffe" data-name="">
+            <img src="./image/coffee.jpeg" alt="coffee" srcset="">
+            <small>COFFEE</small>
+        </div>
+        <div class="product" data-item="coffe" data-name="">
+            <img src="./image/coffee2.jpg" alt="capachino" srcset="">
+            <small>CAPACHINO</small>
+        </div>
+
+        <div class="product" data-item="coffe" data-name="">
+            <img src="./image/cofee3.png" alt="balck coffe" srcset="">
+            <small>BLACK COFFEE</small>
+        </div>
+        <div class="product" data-item="pizza" data-name="">
+            <img src="./image/pizz3.png" alt="pizza" srcset="">
+            <small>PIZZA</small>
+        </div>
+        <div class="product" data-item="pizza" data-name="">
+            <img src="./image/pizza2.jpeg" alt="panner pizza" srcset="">
+            <small>PANNER PIZZA</small>
+        </div>
+        <div class="product" data-item="pizza" data-name="">
+            <img src="./image/pizza4.jpeg" alt="hot laziz pizza" srcset="">
+            <small>ONION PIZZA</small>
+        </div>
+    
+    </div>
+
+
+
+    <script>
+        let lists=document.querySelectorAll('.list');
+        let products=document.querySelectorAll('.product');
+        for(let i=0;i<lists.length;i++){
+            lists[i].addEventListener('click', function(){
+                for(let j=0;j<lists.length;j++){
+                    lists[j].classList.remove('active');
+                }
+                this.classList.add('active');
+                let dataFilter=this.getAttribute('data-filter');
+                for(let k=0;k<products.length;k++){
+                    products[k].classList.add('hide');
+                    products[k].classList.remove('active');
+                if(products[k].getAttribute('data-item')==dataFilter || dataFilter=='all'){
+                    products[k].classList.add('active');
+                    products[k].classList.remove('hide');
+
+                }                }
+            })
+        }
+    </script>
+    <script src="./sort.js"></script>
+</body>
+</html>
